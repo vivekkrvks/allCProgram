@@ -1,26 +1,18 @@
+
+// 
+
 import React, {useState, useEffect} from 'react'
 
 import { StyleSheet, ScrollView} from 'react-native'
 import { Container, Header, Content, List, ListItem, Text, Left, Right, Icon } from 'native-base';
-const HomeScreen = ({ navigation, }) => {
-    const list1 = [
-        {
-            id:1,
-            name:"i am first",
-            page:"first"
-        },
-        {
-            id:2,
-            name:"i am second",
-            page:"second"
-        }
-    ]
+const AfterHomeScreen = ({ navigation,route }) => {
+  const file = route.params.value.file
+    const list1 = route.params.value.page
     const [list2, setlist2] = useState(list1)
-
     return (
         <Container contentContainerStyle={styles.container}>
 
-  
+
 
                 {list2.length == 0 ? (
                 <Container style={styles.container}>
@@ -37,10 +29,9 @@ const HomeScreen = ({ navigation, }) => {
                    {list2.map(info =>(
                      <ListItem
                      key = {info.id}
-                     onPress={()=>navigation.navigate('Index',
+                     onPress={()=>navigation.navigate('Code',
                      {
-                         value:info,
-                         value1: info.page                
+                         value:info.page,
                     })}
                     >
      <Left>
@@ -55,14 +46,14 @@ const HomeScreen = ({ navigation, }) => {
                    ))}
                 </List>
                 </Content>
-            )}
+            )} 
    
       
         </Container>
       );
   
 }
-export default HomeScreen
+export default AfterHomeScreen
 
 const styles = StyleSheet.create({
     emptyContainer: {
